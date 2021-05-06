@@ -48,7 +48,7 @@ public class DatabaseTests {
             Throwable conex = perex.getCause();
             Assertions.assertTrue(conex instanceof ConstraintViolationException);
             Assertions.assertTrue(conex.getCause().getMessage().
-                    contains("Нарушение уникального индекса или первичного ключа"));
+                    contains("Нарушение уникального индекса"));
         });
     }
 
