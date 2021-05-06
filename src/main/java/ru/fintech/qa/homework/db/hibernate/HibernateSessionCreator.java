@@ -2,7 +2,13 @@ package ru.fintech.qa.homework.db.hibernate;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import ru.fintech.qa.homework.db.hibernate.models.*;
+import ru.fintech.qa.homework.db.hibernate.models.Animal;
+import ru.fintech.qa.homework.db.hibernate.models.Places;
+import ru.fintech.qa.homework.db.hibernate.models.Positions;
+import ru.fintech.qa.homework.db.hibernate.models.Sex;
+import ru.fintech.qa.homework.db.hibernate.models.Workman;
+import ru.fintech.qa.homework.db.hibernate.models.Zoo;
+import ru.fintech.qa.homework.db.hibernate.models.ZooAnimal;
 
 public final class HibernateSessionCreator {
     private static SessionFactory session;

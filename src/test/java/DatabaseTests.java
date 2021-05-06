@@ -43,7 +43,7 @@ public class DatabaseTests {
     public void testAnimalAddIndex() {
         animalsTen.forEach((animal) -> {
             PersistenceException perex = Assertions.assertThrows(PersistenceException.class, () -> {
-                HibernateService.putAnimal(animal);
+                HibernateService.putRecord(animal);
             });
             Throwable conex = perex.getCause();
             Assertions.assertTrue(conex instanceof ConstraintViolationException);
@@ -68,7 +68,7 @@ public class DatabaseTests {
     public void testPlacesPutAndAmount() {
         Places place = new Places();
         place.setName("Тест");
-        HibernateService.putPlaces(place);
+        HibernateService.putRecord(place);
         Assertions.assertEquals(HibernateService.getPlaces().size(), 6);
     }
 

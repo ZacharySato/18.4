@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "zoo")
-public class Zoo {
+public final class Zoo {
     @Id
     private int id;
     @Column(name = "\"name\"")
@@ -17,7 +17,7 @@ public class Zoo {
         return id;
     }
 
-    public  void setId( int id) {
+    public  void setId(final int id) {
         this.id = id;
     }
 
@@ -25,7 +25,7 @@ public class Zoo {
         return name;
     }
 
-    public  void setName( String name) {
+    public  void setName(final String name) {
         this.name = name;
     }
 }

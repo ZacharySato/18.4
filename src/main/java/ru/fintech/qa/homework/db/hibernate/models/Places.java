@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "places")
-public class Places {
+public final class Places {
     @Id
     private int id;
     @Column(name = "\"name\"")
@@ -21,7 +21,7 @@ public class Places {
         return id;
     }
 
-    public  void setId( int id) {
+    public  void setId(final int id) {
         this.id = id;
     }
 
@@ -29,7 +29,7 @@ public class Places {
         return name;
     }
 
-    public  void setName( String name) {
+    public  void setName(final String name) {
         this.name = name;
     }
 
@@ -37,7 +37,7 @@ public class Places {
         return row;
     }
 
-    public  void setRow( int row) {
+    public  void setRow(final int row) {
         this.row = row;
     }
 
@@ -45,7 +45,7 @@ public class Places {
         return placeNum;
     }
 
-    public  void setPlacNum( int placeN) {
+    public  void setPlacNum(final int placeN) {
         this.placeNum = placeN;
     }
 }

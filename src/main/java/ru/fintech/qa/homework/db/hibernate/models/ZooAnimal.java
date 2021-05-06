@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "zoo_animal")
-public class ZooAnimal {
+public final class ZooAnimal {
     @Id
     private int id;
     @Column(name = "animal_id")
@@ -25,7 +25,7 @@ public class ZooAnimal {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(final int id) {
         this.id = id;
     }
 
@@ -33,7 +33,7 @@ public class ZooAnimal {
         return animalId;
     }
 
-    public void setAnimalId(int animalId) {
+    public void setAnimalId(final int animalId) {
         this.animalId = animalId;
     }
 
@@ -41,15 +41,16 @@ public class ZooAnimal {
         return workman;
     }
 
-    public void setWorkman(int workman) {
+    public void setWorkman(final int workman) {
         this.workman = workman;
     }
 
     public Timestamp getTimeApperance() {
-        return timeApperance;
+        Timestamp timestamp = this.timeApperance;
+        return timestamp;
     }
 
-    public void setTimeApperance(Timestamp timeApperance) {
-        this.timeApperance = timeApperance;
+    public void setTimeApperance(final Timestamp timeApperance) {
+        this.timeApperance = new Timestamp(timeApperance.getTime());
     }
 }
