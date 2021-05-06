@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import ru.fintech.qa.homework.db.hibernate.HibernateService;
+import ru.fintech.qa.homework.db.hibernate.DBClient;
 import ru.fintech.qa.homework.db.hibernate.models.Animal;
 import ru.fintech.qa.homework.db.hibernate.models.Places;
 import ru.fintech.qa.homework.db.hibernate.models.Workman;
@@ -35,7 +35,7 @@ public class DatabaseTests {
     @Test
     @DisplayName("В таблице public.animal ровно 10 записей")
     public void testAnimalAmount() {
-        Assertions.assertEquals(HibernateService.getAnimals().size(), 10);
+        Assertions.assertEquals(DBClient.getAnimals().size(), 10);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class DatabaseTests {
     public void testAnimalAddIndex() {
         animalsTen.forEach((animal) -> {
             PersistenceException perex = Assertions.assertThrows(PersistenceException.class, () -> {
-                HibernateService.putRecord(animal);
+                DBClient.putRecord(animal);
             });
             Throwable conex = perex.getCause();
             Assertions.assertTrue(conex instanceof ConstraintViolationException);
@@ -68,14 +68,14 @@ public class DatabaseTests {
     public void testPlacesPutAndAmount() {
         Places place = new Places();
         place.setName("Тест");
-        HibernateService.putRecord(place);
-        Assertions.assertEquals(HibernateService.getPlaces().size(), 6);
+        DBClient.putRecord(place);
+        Assertions.assertEquals(DBClient.getPlaces().size(), 6);
     }
 
     @Test
     @DisplayName("В таблице public.zoo всего три записи с name 'Центральный', 'Северный', 'Западный'")
     public void testZooAmountAndNames() {
-        Assertions.assertEquals(HibernateService.getZoos().size(), 3);
+        Assertions.assertEquals(DBClient.getZoos().size(), 3);
         ArrayList<String> legalNames = new ArrayList<>() {
             {
                 add("Центральный");
@@ -83,7 +83,7 @@ public class DatabaseTests {
                 add("Западный");
             }
         };
-        List<String> zooNames = HibernateService.getZoos().stream().map(Zoo::getName).collect(Collectors.toList());
+        List<String> zooNames = DBClient.getZoos().stream().map(Zoo::getName).collect(Collectors.toList());
         Assertions.assertEquals(legalNames, zooNames);
     }
 }

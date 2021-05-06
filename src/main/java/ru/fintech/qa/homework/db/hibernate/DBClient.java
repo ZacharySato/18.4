@@ -8,7 +8,7 @@ import ru.fintech.qa.homework.db.hibernate.models.Places;
 import ru.fintech.qa.homework.db.hibernate.models.Zoo;
 import java.util.List;
 
-public class HibernateService {
+public class DBClient {
     private static final SessionFactory SESSION_FACTORY = HibernateSessionCreator.getSessionFactory();
 
     public static List<Animal> getAnimals() {
